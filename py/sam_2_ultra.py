@@ -275,11 +275,11 @@ class LS_SAM2_ULTRA:
             sam2_model = f"{base_name}-fp16.{extension}"
         model_path = os.path.join(sam2_path, sam2_model)
 
-        if device == "cuda":
-            if torch.cuda.get_device_properties(0).major >= 8:
-                # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
-                torch.backends.cuda.matmul.allow_tf32 = True
-                torch.backends.cudnn.allow_tf32 = True
+        # if device == "cuda":
+        #     if torch.cuda.get_device_properties(0).major >= 8:
+        #         # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
+        #         torch.backends.cuda.matmul.allow_tf32 = True
+        #         torch.backends.cudnn.allow_tf32 = True
         dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": torch.float32}[precision]
         # device = {"cuda": torch.device("cuda"), "cpu": torch.device("cpu")}[device]
         segmentor = 'single_image'
@@ -488,11 +488,11 @@ class LS_Load_SAM2_Model:
             sam2_model = f"{base_name}-fp16.{extension}"
         model_path = os.path.join(sam2_path, sam2_model)
 
-        if device == "cuda":
-            if torch.cuda.get_device_properties(0).major >= 8:
-                # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
-                torch.backends.cuda.matmul.allow_tf32 = True
-                torch.backends.cudnn.allow_tf32 = True
+        # if device == "cuda":
+        #     if torch.cuda.get_device_properties(0).major >= 8:
+        #         # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
+        #         torch.backends.cuda.matmul.allow_tf32 = True
+        #         torch.backends.cudnn.allow_tf32 = True
         dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": torch.float32}[precision]
         # device = {"cuda": torch.device("cuda"), "cpu": torch.device("cpu")}[device]
         segmentor = 'single_image'
@@ -804,11 +804,11 @@ class LS_SAM2_VIDEO_ULTRA:
             sam2_model = f"{base_name}-fp16.{extension}"
         model_path = os.path.join(sam2_path, sam2_model)
 
-        if device == "cuda":
-            if torch.cuda.get_device_properties(0).major >= 8:
-                # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
-                torch.backends.cuda.matmul.allow_tf32 = True
-                torch.backends.cudnn.allow_tf32 = True
+        # if device == "cuda":
+        #     if torch.cuda.get_device_properties(0).major >= 8:
+        #         # turn on tfloat32 for Ampere GPUs (https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices)
+        #         torch.backends.cuda.matmul.allow_tf32 = True
+        #         torch.backends.cudnn.allow_tf32 = True
         dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": torch.float32}[precision]
 
         if not os.path.exists(model_path):

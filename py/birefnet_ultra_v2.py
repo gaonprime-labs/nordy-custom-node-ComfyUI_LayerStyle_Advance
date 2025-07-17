@@ -10,6 +10,8 @@ from .imagefunc import *
 from comfy.utils import ProgressBar
 sys.path.append(os.path.join(os.path.dirname(__file__), 'BiRefNet_v2'))
 
+torch.set_float32_matmul_precision("highest")   # 행렬곱 TF32 완전 OFF
+torch.backends.cudnn.allow_tf32 = False         # 컨볼루션 TF32 OFF
 
 def get_models():
     model_path = os.path.join(folder_paths.models_dir, 'BiRefNet', 'pth')
@@ -146,7 +148,7 @@ class LS_BiRefNetUltraV2:
         else:
             local_files_only = False
 
-        torch.set_float32_matmul_precision(['high', 'highest'][0])
+        # torch.set_float32_matmul_precision(['high', 'highest'][0])
         birefnet_model.to(device)
         birefnet_model.eval()
 
